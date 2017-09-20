@@ -3,7 +3,9 @@
 
 import logging
 import os
-import uuid
+#import uuid
+import string
+import random
 
 from tornado.ioloop import IOLoop
 from tornado.web import Application, RequestHandler
@@ -13,6 +15,10 @@ from tornado.websocket import WebSocketHandler
 rel = lambda *x: os.path.abspath(os.path.join(os.path.dirname(__file__), *x))
 
 global_rooms = {}
+
+
+def generate_random():
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(6))
 
 
 class Room(object):
@@ -26,7 +32,7 @@ class Room(object):
 
 class MainHandler(RequestHandler):
     def get(self):
-        room = str(uuid.uuid4().get_hex().upper()[0:6])
+        room = generate_random() #str(uuid.uuid4().get_hex().upper()[0:6])
         self. redirect('/room/'+room)
 
 
