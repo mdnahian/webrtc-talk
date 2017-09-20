@@ -24,7 +24,7 @@ ws.onmessage = initiatorCtrl;
 function init() {
     var constraints = {
         audio: true,
-        video: true
+        video: false
     };
     getUserMedia(constraints, connect, fail);
 }
