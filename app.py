@@ -77,8 +77,8 @@ def main():
         (r'/ws/([^/]*)', EchoWebSocket),
     ], **settings)
 
-    application.listen(address='127.0.0.1', port=8080)
-    logging.info("Started listening at 127.0.0.1:8080.")
+    application.listen(address='0.0.0.0', port=80)
+    #logging.info("Started listening at 127.0.0.1:8080.")
     IOLoop.instance().start()
 
 
